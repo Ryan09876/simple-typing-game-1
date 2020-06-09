@@ -1,0 +1,46 @@
+:root {
+  --red-color: rgb(231, 60, 60);
+}
+
+.form-running-out-of-time {
+  background-color: var(--red-color);
+  color: black;
+}
+.form-running-out-of-time:focus {
+  background-color: var(--red-color);
+  color: black;
+}
+.form-running-out-of-time::placeholder {
+  color: black;
+}
+.form-input {
+  color: black;
+}
+.form-input:focus {
+  color: black;
+}
+.form-input::placeholder {
+  color: black;
+}
+.form-control {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+.form-control:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
+}
+.word-to-type,
+.time-left {
+  margin: 0;
+  padding: 0;
+}
+.time-and-word-to-type {
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.transition {
+  transition: 0.4s;
+}
+.fast-transition {
+  transition: 0.1s;
+}
