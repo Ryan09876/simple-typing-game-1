@@ -12,6 +12,7 @@ function App() {
   const [language, setLanguage] = useState(true); // TRUE is Englis, FALSE is spanish
 
   /*================== Fading in animation ==================*/
+  //testing comment
 
   const props = useSpring({
     config: { duration: 1000 },
@@ -178,6 +179,9 @@ function App() {
       </div>
     </animated.div>
   );
+  
 }
 
+
 export default App;
+
