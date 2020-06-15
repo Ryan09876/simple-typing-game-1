@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 
 import "./App.css";
@@ -6,13 +6,42 @@ import "./App.css";
 import Input from "./components/input";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState();
   const [isMenuInScreen, setIsMenuInScreen] = useState(false);
   const [dificulty, setDificulty] = useState(1); // easy: 2seconds, normal: 1second, harn 0.4seconds
-  const [language, setLanguage] = useState(true); // TRUE is Englis, FALSE is spanish
+  const [language, setLanguage] = useState(); // TRUE is English, FALSE is spanish
+
+  /*================== Getting the data from the browser ==================*/
+
+  useEffect(() => {
+    let userLanguage = window.localStorage.getItem("language");
+    let userMode = window.localStorage.getItem("mode");
+
+    if (userMode === null) {
+      setDarkMode(false);
+      window.localStorage.setItem("mode", "false");
+    } else if (userMode === "false") {
+      setDarkMode(false);
+    } else if (userMode === "true") {
+      setDarkMode(true);
+    }
+
+    if (userLanguage === null) {
+      setLanguage(true);
+      window.localStorage.setItem("language", "true");
+    } else if (userLanguage === "true") {
+      setLanguage(true);
+    } else if (userLanguage === "false") {
+      setLanguage(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("mode", darkMode);
+    window.localStorage.setItem("language", language);
+  }, [darkMode, language]);
 
   /*================== Fading in animation ==================*/
-  //testing comment
 
   const props = useSpring({
     config: { duration: 1000 },
@@ -158,7 +187,7 @@ function App() {
                 onClick={() => setIsMenuInScreen(!isMenuInScreen)}
                 className="settings-button"
               >
-                <i class="fas fa-cog fa-2x"></i>
+                <i className="fas fa-cog fa-2x"></i>
               </div>
             </div>
           </div>
@@ -179,9 +208,5 @@ function App() {
       </div>
     </animated.div>
   );
-  
 }
-
-
 export default App;
-
