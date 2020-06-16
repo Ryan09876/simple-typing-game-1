@@ -1,20 +1,63 @@
 .typing-test {
   height: 100vh;
-  background: rgb(255, 255, 255);
+}
+body {
+  background-attachment: fixed;
+  background: #23074d; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #cc5333,
+    #23074d
+  ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
-    90deg,
-    rgb(212, 243, 234) 0%,
-    rgb(214, 226, 235) 30%,
-    rgb(74, 192, 228) 100%
-  );
+    to right,
+    #cc5333,
+    #23074d
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .typing-test-jumbotron {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
   display: flex;
   justify-content: space-between;
 }
 .text-to-type {
+  font-size: 1.4rem;
+  color: white;
   min-height: 20vh;
   display: flex;
   margin-bottom: 2rem;
+}
+.word-preview-container {
+  color: white;
+  transition: 0.3s;
+  display: flex;
+}
+.word-preview-text-1 {
+  color: white;
+  transition: 0.1s;
+  margin-right: 1rem;
+}
+.word-preview-text-2 {
+  margin-right: 1rem;
+}
+.word-preview-text-3 {
+  margin-right: 1rem;
+}
+.word-preview-text-4 {
+  margin-right: 1rem;
+}
+.word-preview-text-5 {
+  opacity: 0.2;
+  margin-right: 1rem;
+}
+.word-preview-text-6 {
+  opacity: 0.2;
+  margin-right: 1rem;
+}
+.word-preview-text-1-equal {
+  color: rgb(24, 185, 33);
+  transition: 0.2s;
+  margin-right: 1rem;
+  transform: translateY(-10px);
 }

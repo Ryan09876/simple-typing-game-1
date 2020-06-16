@@ -11,8 +11,8 @@ function HomeMenu() {
   });
 
   return (
-    <animated.div style={animation}>
-      <div className="menu">
+    <div className="menu">
+      <animated.div style={animation}>
         <div className="jumbotron-style jumbotron ">
           <h1>Main Menu</h1>
         </div>
@@ -20,22 +20,22 @@ function HomeMenu() {
           <h2>Game Modes:</h2>
           <hr></hr>
           <div className="cards">
-            <Link to="/10-second-game">
+            <Link className="link-menu" to="/10-second-game">
               <div className="card">
-                Lolo
-                <div className="card-body"></div>
+                <h4>10 second chalenge</h4>
+                <p>How many words can you type in 10 seconds?</p>
               </div>
             </Link>
-            <Link to="/typing-test">
-              <div className="card shadow">
-                Typing test
-                <div className="card-body"></div>
+            <Link className="link-menu" to="/typing-test">
+              <div className="card">
+                <h4>Typing test</h4>
+                <p>Improve your typing skills!</p>
               </div>
             </Link>
           </div>
         </div>
-      </div>
-    </animated.div>
+      </animated.div>
+    </div>
   );
 }
 export default HomeMenu;

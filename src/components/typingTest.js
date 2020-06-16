@@ -11,6 +11,8 @@ function TypingTest() {
   const [wpm, setWPM] = useState(0);
   const [textWordCountUp, setTextWordCountUp] = useState(0);
   const [randomWordSpace, setRandomWordSpace] = useState([]);
+  const [isWrong, setIsWrong] = useState(false);
+  const [isEqual, setIsEqual] = useState(false);
 
   useEffect(() => {
     const selectRandomText = () => {
@@ -19,12 +21,11 @@ function TypingTest() {
         Math.random() * Math.floor(jsonText.texts.length)
       );
       setRandomText(jsonText.texts[random]);
-
       let text = jsonText.texts[random];
 
       let array = [];
-
       let splitedText = text.split(" ");
+      setRandomTextArr(splitedText);
       splitedText.map((word) => {
         let randomWord = word + " ";
         array.push(randomWord);
@@ -38,6 +39,8 @@ function TypingTest() {
     if (isRunning) {
       if (e.target.value === randomWordSpace[textWordCountUp]) {
         e.target.value = "";
+        setIsEqual(false);
+        setIsWrong(false);
         setTextWordCountUp((textWordCountUp) => {
           return textWordCountUp + 1;
         });
@@ -46,10 +49,16 @@ function TypingTest() {
       if (e.target.value === randomWordSpace[0]) {
         setIsRunning(true);
         e.target.value = "";
+        setIsEqual(false);
+        setIsWrong(false);
         setTextWordCountUp((textWordCountUp) => {
           return textWordCountUp + 1;
         });
       }
+    }
+
+    if (e.target.value === randomTextArr[textWordCountUp]) {
+      setIsEqual(true);
     }
   };
 
@@ -72,18 +81,9 @@ function TypingTest() {
     to: { opacity: 1 },
   });
 
-  //   useEffect(() => {
-  //     const displayTheText = () => {
-  //       let array = randomWordSpace;
-  //       for (let i = 0; i < array.length; i++) {
-  //         return <p className={`word${i}`}>{array[i]}</p>;
-  //       }
-  //     };
-  //   }, [textWordCountUp]);
-
   return (
-    <animated.div style={animation}>
-      <div className="typing-test">
+    <div className="typing-test">
+      <animated.div style={animation}>
         <div className="typing-test-jumbotron jumbotron shadow">
           <h1>Typing Test</h1>
           <Link to="/">
@@ -91,6 +91,31 @@ function TypingTest() {
           </Link>
         </div>
         <div className="text-to-type container">{randomWordSpace}</div>
+        <div className="word-preview-container container">
+          <h4
+            className={
+              isEqual ? "word-preview-text-1-equal" : "word-preview-text-1"
+            }
+          >
+            {randomWordSpace[textWordCountUp]}
+          </h4>
+          <h4 className="word-preview-text-2">
+            {randomWordSpace[textWordCountUp + 1]}
+          </h4>
+          <h4 className="word-preview-text-3">
+            {randomWordSpace[textWordCountUp + 2]}
+          </h4>
+          <h4 className="word-preview-text-4">
+            {randomWordSpace[textWordCountUp + 3]}
+          </h4>
+          <h4 className="word-preview-text-5">
+            {randomWordSpace[textWordCountUp + 4]}
+          </h4>
+          <h4 className="word-preview-text-6">
+            {randomWordSpace[textWordCountUp + 5]}
+          </h4>
+          <h4 className="word-preview-text-6">...</h4>
+        </div>
         <div className="input-field container">
           <form>
             <input
@@ -102,8 +127,8 @@ function TypingTest() {
           </form>
         </div>
         {countingUpSeconds}
-      </div>
-    </animated.div>
+      </animated.div>
+    </div>
   );
 }
 export default TypingTest;
