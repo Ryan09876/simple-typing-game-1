@@ -57,8 +57,16 @@ function TypingTest() {
       }
     }
 
+    let word = e.target.value;
+
     if (e.target.value === randomTextArr[textWordCountUp]) {
       setIsEqual(true);
+    } else if (word.length > randomTextArr[textWordCountUp].length - 1) {
+      setIsWrong(true);
+    } else if (word.length !== randomTextArr[textWordCountUp].length) {
+      setIsWrong(false);
+    } else if (e.target.value !== randomTextArr[textWordCountUp]) {
+      setIsEqual(false);
     }
   };
 
@@ -81,6 +89,14 @@ function TypingTest() {
     to: { opacity: 1 },
   });
 
+  const selectClassName = () => {
+    if (isEqual) {
+      return "word-preview-text-1-equal";
+    } else if (isWrong) {
+      return "word-preview-text-1-wrong";
+    } else return "word-preview-text-1";
+  };
+
   return (
     <div className="typing-test">
       <animated.div style={animation}>
@@ -92,11 +108,7 @@ function TypingTest() {
         </div>
         <div className="text-to-type container">{randomWordSpace}</div>
         <div className="word-preview-container container">
-          <h4
-            className={
-              isEqual ? "word-preview-text-1-equal" : "word-preview-text-1"
-            }
-          >
+          <h4 className={selectClassName()}>
             {randomWordSpace[textWordCountUp]}
           </h4>
           <h4 className="word-preview-text-2">

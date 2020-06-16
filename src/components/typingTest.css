@@ -5,12 +5,12 @@ body {
   background-attachment: fixed;
   background: #23074d; /* fallback for old browsers */
   background: -webkit-linear-gradient(
-    to right,
+    to left,
     #cc5333,
     #23074d
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
-    to right,
+    to left,
     #cc5333,
     #23074d
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -57,6 +57,12 @@ body {
 }
 .word-preview-text-1-equal {
   color: rgb(24, 185, 33);
+  transition: 0.2s;
+  margin-right: 1rem;
+  transform: translateY(-10px);
+}
+.word-preview-text-1-wrong {
+  color: rgb(255, 0, 0);
   transition: 0.2s;
   margin-right: 1rem;
   transform: translateY(-10px);
