@@ -1,12 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import "./index.css";
-import App from "./App";
+
+import Game10second from "./game10seconds";
+import HomeMenu from "./homeMenu";
+import TypintTest from "./components/typingTest";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <HomeMenu />
+        </Route>
+        <Route path="/10-second-game">
+          <Game10second />
+        </Route>
+        <Route>
+          <TypintTest />
+        </Route>
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

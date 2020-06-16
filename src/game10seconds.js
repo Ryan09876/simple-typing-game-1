@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
+import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 
 import "./App.css";
 
 import Input from "./components/input";
 
-function App() {
-  const [darkMode, setDarkMode] = useState();
+function Game10seconds() {
+  const [darkMode, setDarkMode] = useState(true);
   const [isMenuInScreen, setIsMenuInScreen] = useState(false);
   const [dificulty, setDificulty] = useState(1); // easy: 2seconds, normal: 1second, harn 0.4seconds
   const [language, setLanguage] = useState(); // TRUE is English, FALSE is spanish
+  const [buttonPressed, setButtonPressed] = useState(false);
 
   /*================== Getting the data from the browser ==================*/
 
@@ -45,8 +47,8 @@ function App() {
 
   const props = useSpring({
     config: { duration: 1000 },
-    opacity: 1,
     from: { opacity: 0 },
+    to: { opacity: 1 },
   });
 
   /*================== Change the theme of the sliding menu ==================*/
@@ -168,45 +170,52 @@ function App() {
   }
 
   return (
-    <animated.div style={props}>
-      <div>{slidingMenu()}</div>
-      <div>
-        <div className={darkMode ? "dark-mode" : "light-mode"}>
-          <div
-            className={
-              darkMode
-                ? "transition App p-3 container bg-dark "
-                : "transition App p-3 container bg-primary text-white"
-            }
-          >
-            <div className="title ">
-              <h1>{language ? "Typing game!" : "Escribidor!"}</h1>
+    <div className={darkMode ? "dark-mode" : "light-mode"}>
+      <animated.div style={props}>
+        <div>{slidingMenu()}</div>
+        <div>
+          <div>
+            <div
+              className={
+                darkMode
+                  ? "transition App p-3 container bg-dark "
+                  : "transition App p-3 container bg-primary text-white"
+              }
+            >
+              <div className="title ">
+                <h1>{language ? "Typing game!" : "Escribidor!"}</h1>
+              </div>
+              <div className="settings-div">
+                <div
+                  onClick={() => setIsMenuInScreen(!isMenuInScreen)}
+                  className="settings-button"
+                >
+                  <i className="fas fa-cog fa-2x"></i>
+                </div>
+                <div>
+                  <Link to="/">
+                    <button className="btn btn-light">Home</button>
+                  </Link>
+                </div>
+              </div>
             </div>
-            <div>
-              <div
-                onClick={() => setIsMenuInScreen(!isMenuInScreen)}
-                className="settings-button"
-              >
-                <i className="fas fa-cog fa-2x"></i>
+            <div
+              onClick={() => {
+                setIsMenuInScreen(false);
+              }}
+            >
+              <div className="container mt-5">
+                <Input
+                  dificulty={dificulty}
+                  language={language}
+                  darkMode={darkMode}
+                />
               </div>
             </div>
           </div>
-          <div
-            onClick={() => {
-              setIsMenuInScreen(false);
-            }}
-          >
-            <div className="container mt-5">
-              <Input
-                dificulty={dificulty}
-                language={language}
-                darkMode={darkMode}
-              />
-            </div>
-          </div>
         </div>
-      </div>
-    </animated.div>
+      </animated.div>
+    </div>
   );
 }
-export default App;
+export default Game10seconds;

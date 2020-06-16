@@ -262,3 +262,8 @@
   color: white;
   background-color: rgb(85, 85, 85);
 }
+.settings-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

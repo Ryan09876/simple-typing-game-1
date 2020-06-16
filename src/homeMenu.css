@@ -1,0 +1,38 @@
+.jumbotron-style {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 0;
+  color: white;
+}
+.menu {
+  height: 100vh;
+  background: #00d2ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #3a7bd5,
+    #00d2ff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #3a7bd5,
+    #00d2ff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+ul {
+  list-style-type: none;
+  text-decoration: none;
+}
+a {
+  color: black;
+}
+.card {
+  min-width: 30rem;
+  border-radius: 10px;
+  padding: 1rem;
+  border: none;
+}
+.cards {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}

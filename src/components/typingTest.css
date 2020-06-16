@@ -1,0 +1,20 @@
+.typing-test {
+  height: 100vh;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgb(212, 243, 234) 0%,
+    rgb(214, 226, 235) 30%,
+    rgb(74, 192, 228) 100%
+  );
+}
+.typing-test-jumbotron {
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+}
+.text-to-type {
+  min-height: 20vh;
+  display: flex;
+  margin-bottom: 2rem;
+}
