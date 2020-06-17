@@ -13,6 +13,7 @@ function TypingTest() {
   const [randomWordSpace, setRandomWordSpace] = useState([]);
   const [isWrong, setIsWrong] = useState(false);
   const [isEqual, setIsEqual] = useState(false);
+  const [won, setWon] = useState(false);
 
   useEffect(() => {
     const selectRandomText = () => {
@@ -30,43 +31,47 @@ function TypingTest() {
         let randomWord = word + " ";
         array.push(randomWord);
       });
+      array.push(".");
       setRandomWordSpace(array);
     };
     selectRandomText();
   }, []);
 
   const checkForEqualWord = (e) => {
-    if (isRunning) {
-      if (e.target.value === randomWordSpace[textWordCountUp]) {
-        e.target.value = "";
-        setIsEqual(false);
-        setIsWrong(false);
-        setTextWordCountUp((textWordCountUp) => {
-          return textWordCountUp + 1;
-        });
+    if (randomWordSpace.length - 1 === textWordCountUp) {
+      setWon(true);
+    } else {
+      if (isRunning) {
+        if (e.target.value === randomWordSpace[textWordCountUp]) {
+          e.target.value = "";
+          setIsEqual(false);
+          setIsWrong(false);
+          setTextWordCountUp((textWordCountUp) => {
+            return textWordCountUp + 1;
+          });
+        }
+      } else if (isRunning === false) {
+        if (e.target.value === randomWordSpace[0]) {
+          setIsRunning(true);
+          e.target.value = "";
+          setIsEqual(false);
+          setIsWrong(false);
+          setTextWordCountUp((textWordCountUp) => {
+            return textWordCountUp + 1;
+          });
+        }
       }
-    } else if (isRunning === false) {
-      if (e.target.value === randomWordSpace[0]) {
-        setIsRunning(true);
-        e.target.value = "";
-        setIsEqual(false);
+
+      let word = e.target.value;
+      if (e.target.value === randomTextArr[textWordCountUp]) {
+        setIsEqual(true);
+      } else if (word.length > randomTextArr[textWordCountUp].length - 1) {
+        setIsWrong(true);
+      } else if (word.length !== randomTextArr[textWordCountUp].length) {
         setIsWrong(false);
-        setTextWordCountUp((textWordCountUp) => {
-          return textWordCountUp + 1;
-        });
+      } else if (e.target.value !== randomTextArr[textWordCountUp]) {
+        setIsEqual(false);
       }
-    }
-
-    let word = e.target.value;
-
-    if (e.target.value === randomTextArr[textWordCountUp]) {
-      setIsEqual(true);
-    } else if (word.length > randomTextArr[textWordCountUp].length - 1) {
-      setIsWrong(true);
-    } else if (word.length !== randomTextArr[textWordCountUp].length) {
-      setIsWrong(false);
-    } else if (e.target.value !== randomTextArr[textWordCountUp]) {
-      setIsEqual(false);
     }
   };
 
@@ -97,15 +102,9 @@ function TypingTest() {
     } else return "word-preview-text-1";
   };
 
-  return (
-    <div className="typing-test">
-      <animated.div style={animation}>
-        <div className="typing-test-jumbotron jumbotron shadow">
-          <h1>Typing Test</h1>
-          <Link to="/">
-            <button className="btn btn-light">Home</button>
-          </Link>
-        </div>
+  const game = () => {
+    return (
+      <div>
         <div className="text-to-type container">{randomWordSpace}</div>
         <div className="word-preview-container container">
           <h4 className={selectClassName()}>
@@ -138,7 +137,37 @@ function TypingTest() {
             ></input>
           </form>
         </div>
-        {countingUpSeconds}
+      </div>
+    );
+  };
+
+  const winScreen = () => {
+    return (
+      <div className="won-screen">
+        <h1 className="won-text">You won!</h1>
+      </div>
+    );
+  };
+
+  return (
+    <div className="typing-test">
+      <animated.div style={animation}>
+        <div className="typing-test-jumbotron jumbotron shadow">
+          <h3>Typing Test</h3>
+          <Link to="/">
+            <button className="btn btn-light">Home</button>
+          </Link>
+        </div>
+        {won ? winScreen() : game()}
+        <div
+          className={
+            won ? "footer-won container-fluid" : "footer container-fluid"
+          }
+        >
+          <div className={won ? "stats-won container" : "stats container"}>
+            <h1>Hello</h1>
+          </div>
+        </div>
       </animated.div>
     </div>
   );
