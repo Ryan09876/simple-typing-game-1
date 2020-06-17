@@ -1,7 +1,4 @@
 .typing-test {
-  height: 100vh;
-}
-body {
   background-attachment: fixed;
   background: #23074d; /* fallback for old browsers */
   background: -webkit-linear-gradient(

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
+import Div100vh from "react-div-100vh";
 import "./typingTest.css";
 
 function TypingTest() {
@@ -185,6 +186,10 @@ function TypingTest() {
           <form>
             <input
               autoFocus
+              spellCheck="true"
+              autoComplete="on"
+              autoCorrect="on"
+              autoCapitalize="off"
               onChange={checkForEqualWord}
               placeholder={"Start typing the text above!"}
               className="form-control"
@@ -254,7 +259,7 @@ function TypingTest() {
   };
 
   return (
-    <div className="typing-test">
+    <Div100vh className="typing-test">
       <animated.div style={animation}>
         <div className="typing-test-jumbotron jumbotron shadow">
           <h3>Typing Test</h3>
@@ -265,7 +270,7 @@ function TypingTest() {
         {won ? winScreen() : game()}
         {typingTestFooter()}
       </animated.div>
-    </div>
+    </Div100vh>
   );
 }
 export default TypingTest;

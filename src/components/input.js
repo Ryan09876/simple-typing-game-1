@@ -232,7 +232,10 @@ function Input(props) {
       <div className="input">
         <input
           autoFocus
-          autoCapitalize="none"
+          spellCheck="false"
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
           onChange={checkForEqualWord}
           placeholder={placeholderChange()}
           type="text"

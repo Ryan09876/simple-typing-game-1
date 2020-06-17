@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
+import Div100vh from "react-div-100vh";
 
 import "./App.css";
 
@@ -170,7 +171,7 @@ function Game10seconds() {
   }
 
   return (
-    <div className={darkMode ? "dark-mode" : "light-mode"}>
+    <Div100vh className={darkMode ? "dark-mode" : "light-mode"}>
       <animated.div style={props}>
         <div>{slidingMenu()}</div>
         <div>
@@ -215,7 +216,7 @@ function Game10seconds() {
           </div>
         </div>
       </animated.div>
-    </div>
+    </Div100vh>
   );
 }
 export default Game10seconds;

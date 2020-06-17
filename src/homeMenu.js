@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import "./homeMenu.css";
+import Div100vh from "react-div-100vh";
 
 function HomeMenu() {
   const animation = useSpring({
@@ -11,7 +12,7 @@ function HomeMenu() {
   });
 
   return (
-    <div className="menu">
+    <Div100vh className="menu">
       <animated.div style={animation}>
         <div className="jumbotron-style jumbotron ">
           <h1>Main Menu</h1>
@@ -35,7 +36,7 @@ function HomeMenu() {
           </div>
         </div>
       </animated.div>
-    </div>
+    </Div100vh>
   );
 }
 export default HomeMenu;
