@@ -14,8 +14,14 @@ function TypingTest() {
   const [isWrong, setIsWrong] = useState(false);
   const [isEqual, setIsEqual] = useState(false);
   const [won, setWon] = useState(false);
+  const [repeatGame, setRepeatGame] = useState(false);
+  const [nextText, setNextText] = useState(false);
+  const [progresPercent, setProgresPercent] = useState(0);
 
   useEffect(() => {
+    if (nextText) {
+      setNextText(false);
+    }
     const selectRandomText = () => {
       let jsonText = require("./text.json");
       let random = Math.floor(
@@ -35,10 +41,22 @@ function TypingTest() {
       setRandomWordSpace(array);
     };
     selectRandomText();
-  }, []);
+  }, [nextText]);
+
+  useEffect(() => {
+    let percent = textWordCountUp / randomWordSpace.length;
+    percent *= 100;
+    setProgresPercent(percent);
+  }, [textWordCountUp]);
 
   const checkForEqualWord = (e) => {
+    if (repeatGame) {
+      e.target.value = "";
+      setRepeatGame(false);
+    }
+
     if (randomWordSpace.length - 1 === textWordCountUp) {
+      setIsRunning(false);
       setWon(true);
     } else {
       if (isRunning) {
@@ -63,29 +81,33 @@ function TypingTest() {
       }
 
       let word = e.target.value;
+
       if (e.target.value === randomTextArr[textWordCountUp]) {
         setIsEqual(true);
       } else if (word.length > randomTextArr[textWordCountUp].length - 1) {
         setIsWrong(true);
       } else if (word.length !== randomTextArr[textWordCountUp].length) {
         setIsWrong(false);
-      } else if (e.target.value !== randomTextArr[textWordCountUp]) {
+        setIsEqual(false);
+      } else {
         setIsEqual(false);
       }
     }
   };
 
   useEffect(() => {
-    let intervalSeconds = null;
-
     if (isRunning) {
-      intervalSeconds = setInterval(() => {
-        setCountingUpSeconds((countingUpSeconds) => countingUpSeconds + 1);
-      }, 1000);
+      let intervalSeconds = null;
+
+      if (isRunning) {
+        intervalSeconds = setInterval(() => {
+          setCountingUpSeconds((countingUpSeconds) => countingUpSeconds + 1);
+        }, 1000);
+      }
+      return () => {
+        clearInterval(intervalSeconds);
+      };
     }
-    return () => {
-      clearInterval(intervalSeconds);
-    };
   }, [countingUpSeconds, isRunning]);
 
   const animation = useSpring({
@@ -102,10 +124,42 @@ function TypingTest() {
     } else return "word-preview-text-1";
   };
 
+  useEffect(() => {
+    const calculateWordPerMinute = () => {
+      if (isRunning) {
+        let wordsPerMinute = (textWordCountUp / countingUpSeconds) * 60;
+        wordsPerMinute = wordsPerMinute.toFixed([1]);
+        setWPM(wordsPerMinute);
+      }
+    };
+    calculateWordPerMinute();
+  }, [textWordCountUp, isRunning]);
+
+  const repeatSameText = () => {
+    setRepeatGame(true);
+    setIsRunning(false);
+    setWon(false);
+    setCountingUpSeconds(0);
+    setWPM(0);
+    setTextWordCountUp(0);
+  };
+
+  const newText = () => {
+    setNextText(true);
+    setRepeatGame(true);
+    setIsRunning(false);
+    setWon(false);
+    setTextWordCountUp(0);
+    setWPM(0);
+    setTextWordCountUp(0);
+  };
+
   const game = () => {
     return (
       <div>
-        <div className="text-to-type container">{randomWordSpace}</div>
+        <div className="text-to-type container">
+          <p>{randomWordSpace}</p>
+        </div>
         <div className="word-preview-container container">
           <h4 className={selectClassName()}>
             {randomWordSpace[textWordCountUp]}
@@ -130,12 +184,62 @@ function TypingTest() {
         <div className="input-field container">
           <form>
             <input
+              autoFocus
               onChange={checkForEqualWord}
               placeholder={"Start typing the text above!"}
               className="form-control"
               type="text"
             ></input>
           </form>
+        </div>
+        <div className="container">
+          <div
+            className="progress-bar-out container"
+            style={isRunning ? { opacity: 1 } : { opacity: 0 }}
+          >
+            <div
+              className="progress-bar-in container"
+              style={{ width: `${progresPercent}%` }}
+            ></div>
+            <p className="word-count">
+              {textWordCountUp} / {randomTextArr.length} words
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const typingTestFooter = () => {
+    return (
+      <div
+        className={
+          won ? "footer-won container-fluid" : "footer container-fluid"
+        }
+      >
+        <div className={won ? "stats-won container" : "stats container"}>
+          <div className="icon" onClick={repeatSameText}>
+            <div className="repeat-icon">
+              <i className="fas fa-undo-alt fa-2x"></i>
+            </div>
+          </div>
+          <div className="aling-flex">
+            <div className="mr-4">
+              <p className="wpm-time">
+                WPM:{" "}
+                {countingUpSeconds < 3 || textWordCountUp < 4 ? "..." : wpm}
+              </p>
+            </div>
+            <div>
+              <p className="wpm-time">Time: {countingUpSeconds}s</p>
+            </div>
+          </div>
+
+          <div className="icon ml-4" onClick={newText}>
+            <div className="next-icon">
+              <i className="fas fa-arrow-right fa-2x"></i>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -144,7 +248,7 @@ function TypingTest() {
   const winScreen = () => {
     return (
       <div className="won-screen">
-        <h1 className="won-text">You won!</h1>
+        <h1 className="won-text">Good job!</h1>
       </div>
     );
   };
@@ -159,15 +263,7 @@ function TypingTest() {
           </Link>
         </div>
         {won ? winScreen() : game()}
-        <div
-          className={
-            won ? "footer-won container-fluid" : "footer container-fluid"
-          }
-        >
-          <div className={won ? "stats-won container" : "stats container"}>
-            <h1>Hello</h1>
-          </div>
-        </div>
+        {typingTestFooter()}
       </animated.div>
     </div>
   );

@@ -231,6 +231,7 @@ function Input(props) {
       <div>{startOfTheGame()}</div>
       <div className="input">
         <input
+          autoFocus
           autoCapitalize="none"
           onChange={checkForEqualWord}
           placeholder={placeholderChange()}
