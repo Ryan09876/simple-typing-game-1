@@ -230,7 +230,7 @@ function Game10seconds() {
                   setIsMenuInScreen(false);
                 }}
               >
-                <div className="container mt-5">
+                <div className="container mt-3">
                   <Input
                     dificulty={dificulty}
                     language={language}

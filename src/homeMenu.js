@@ -120,7 +120,7 @@ function HomeMenu() {
                 <Link className="link-menu" to="/10-second-game">
                   <div className="card">
                     <h4>10 second chalenge</h4>
-                    <p>How many words can you type in 10 seconds?</p>
+                    <p>10 seconds, that's it...</p>
                   </div>
                 </Link>
                 <Link className="link-menu" to="/typing-test">
