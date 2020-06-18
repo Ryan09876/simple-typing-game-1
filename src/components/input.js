@@ -15,6 +15,7 @@ function Input(props) {
   const [highestScore, setHighestScore] = useState(0);
   const [countingUpSeconds, setCountingUpSeconds] = useState(0); //the counting up seconds are to calculate the words per minut
   const [wpm, setWPM] = useState(0);
+  const [keyPressed, setKeyPressed] = useState(0);
 
   const [words] = useState(() => {
     let randomNewWords = require("random-words");
@@ -110,7 +111,7 @@ function Input(props) {
       }
     };
     calculateWordPerMinute();
-  }, [score, isRunning, countingUpSeconds]);
+  }, [score, isRunning, keyPressed]);
 
   /*================== Select the text to display at the befining of the game ==================*/
 
@@ -184,6 +185,9 @@ function Input(props) {
   /*================== Check for equal word ==================*/
 
   const checkForEqualWord = (e) => {
+    setKeyPressed((keyPressed) => {
+      return keyPressed + 1;
+    });
     if (isRunning) {
       if (e.target.value === randomWord) {
         e.target.value = "";

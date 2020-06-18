@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import "./index.css";
-
 import Game10second from "./game10seconds";
 import HomeMenu from "./homeMenu";
 import TypintTest from "./components/typingTest";
