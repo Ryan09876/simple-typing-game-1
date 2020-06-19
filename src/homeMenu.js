@@ -5,10 +5,12 @@ import "./homeMenu.css";
 import Div100vh from "react-div-100vh";
 import { useState } from "react";
 import { render } from "@testing-library/react";
+import Header from "./components/header";
 
 function HomeMenu() {
   const [isSlidingMenuOpen, setIsSlidingMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
+
   const animation = useSpring({
     config: { duration: 500 },
     from: { opacity: 0 },
@@ -90,26 +92,19 @@ function HomeMenu() {
           }
         >
           <animated.div style={animation}>
-            <div className="jumbotron-style jumbotron ">
-              <div className="menu-header">
-                <div>
-                  <h1>Simple Typing Game</h1>
-                  <h5 className="color-green">
-                    Test your typing skill and have some fun!
-                  </h5>
-                </div>
-
-                <div
-                  onClick={handleOpeningSideMenu}
-                  className={
-                    isSlidingMenuOpen
-                      ? "menu-settings-button-open"
-                      : "menu-settings-button"
-                  }
-                >
-                  <h2 className="menu-settings-button-text">About</h2>
-                </div>
-              </div>
+            <Header
+              title={"Simple Typing Game"}
+              info={"Test your typing skill and have some fun!"}
+            />
+            <div
+              onClick={handleOpeningSideMenu}
+              className={
+                isSlidingMenuOpen
+                  ? "menu-settings-button-open"
+                  : "menu-settings-button"
+              }
+            >
+              <h2 className="menu-settings-button-text">About</h2>
             </div>
             <div className="game-modes container">
               <div className="d-flex justify-content-center">
@@ -123,7 +118,7 @@ function HomeMenu() {
                     <p>10 seconds, that's it...</p>
                   </div>
                 </Link>
-                <Link className="link-menu" to="/typing-test">
+                <Link className="link-menu" to="/levels">
                   <div className="card">
                     <h4>Typing test</h4>
                     <p>Improve your typing skills!</p>

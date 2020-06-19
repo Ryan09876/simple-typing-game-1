@@ -2,10 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import "./index.css";
+import * as serviceWorker from "./serviceWorker";
+
+//Pages
 import Game10second from "./game10seconds";
 import HomeMenu from "./homeMenu";
 import TypintTest from "./components/typingTest";
-import * as serviceWorker from "./serviceWorker";
+import Levels from "./components/levels";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,8 +20,8 @@ ReactDOM.render(
         <Route path="/10-second-game">
           <Game10second />
         </Route>
-        <Route>
-          <TypintTest />
+        <Route path="/levels">
+          <Levels />
         </Route>
       </Switch>
     </Router>

@@ -1,0 +1,212 @@
+.levels {
+  background-color: rgb(91, 161, 44);
+  color: white;
+}
+
+@media only screen and (min-width: 1001px) {
+  .grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .grid-div {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+  .card-container {
+    border-radius: 10px;
+    background-color: rgb(87, 87, 87);
+    padding: 0;
+    margin: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 320px;
+    position: relative;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .image-box {
+    top: 0;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .grid-image {
+    width: 320px;
+    height: 200px;
+  }
+  .content {
+    padding: 1rem;
+    margin: 0;
+  }
+  h5,
+  h4 {
+    margin: 0;
+  }
+  .card-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 20px rgb(73, 73, 73);
+  }
+  .quick-menu-div-hidden {
+    padding: 0;
+    padding-left: 1rem;
+    transition: transform 200ms;
+    height: 100vh;
+    width: 20rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgb(40, 40, 40);
+    overflow-y: scroll;
+    direction: rtl;
+  }
+  .quick-menu-div-shown {
+    padding: 1rem;
+    transition: transform 200ms;
+    height: 100vh;
+    width: 20rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgb(40, 40, 40);
+    overflow-y: scroll;
+    direction: rtl;
+  }
+  .open-quick-menu-button {
+    position: fixed;
+    z-index: -3;
+    transform: translateX(300rem);
+  }
+  .open-quick-menu-button:hover {
+    background-color: rgb(80, 80, 80);
+  }
+  .levels-open {
+    background-color: rgb(40, 40, 40);
+    transition: transform 200ms;
+    margin-right: 20rem;
+  }
+  .levels-closed {
+    background-color: rgb(40, 40, 40);
+    transition: transform 200ms;
+    margin-right: 20rem;
+  }
+  .li-list {
+    padding: 0.5rem;
+    border-left: 2px solid rgb(91, 161, 54);
+  }
+  .quick-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  .quick-list-div {
+    background-color: rgb(91, 161, 54);
+    width: 0rem;
+    height: 1rem;
+    transition: 0.3s;
+    border-radius: 5px 0px 0px 5px;
+  }
+  .quick-list-item:hover .quick-list-div {
+    width: 2rem;
+  }
+  .quick-list-item:hover {
+    background-color: rgb(71, 71, 71);
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: rgb(26, 26, 26);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(91, 161, 54);
+  }
+}
+
+@media only screen and (max-width: 1001px) {
+  .grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+  .card-container {
+    background-color: rgb(87, 87, 87);
+    padding: 0;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    border-radius: 10px;
+  }
+  .image-box {
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .grid-image {
+    width: 320px;
+  }
+  .content {
+    padding: 1rem;
+    margin: 0;
+  }
+  h5,
+  h4 {
+    margin: 0;
+  }
+}
+/* .quick-menu-div-hidden {
+  height: 100vh;
+  width: 20rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgb(40, 40, 40);
+  padding: 1rem;
+  transform: translateX(20rem);
+  -webkit-transform: translateX(20rem);
+  -moz-transform: translateX(20rem);
+  transition: transform 200ms;
+}
+.quick-menu-div-shown {
+  padding: 1rem;
+  transition: transform 200ms;
+  height: 100vh;
+  width: 20rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgb(40, 40, 40);
+  overflow-y: scroll;
+  direction: rtl;
+}
+
+.open-quick-menu-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 4rem;
+  margin-right: 4rem;
+  background-color: rgb(59, 59, 59);
+  border-radius: 20px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 200ms;
+}
+.open-quick-menu-button:hover {
+  background-color: rgb(80, 80, 80);
+}
+.levels-open {
+  background-color: rgb(40, 40, 40);
+
+  transform: translateX(-21rem);
+  -webkit-transform: translateX(-21rem);
+  -moz-transform: translateX(-21rem);
+  transition: transform 200ms;
+}
+.levels-closed {
+  background-color: rgb(40, 40, 40);
+  transition: transform 200ms;
+} */
