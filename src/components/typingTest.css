@@ -6,6 +6,7 @@
     justify-content: space-between;
     margin-bottom: 1rem;
     padding: 1.5rem;
+    transition: 0.3s;
   }
   h3 {
     font-size: 3rem;
@@ -16,6 +17,7 @@
     min-height: 20vh;
     display: flex;
     margin-bottom: 2rem;
+    transition: 0.3s;
   }
   .word-preview-container {
     color: white;
@@ -100,6 +102,45 @@
   .home-levels-div {
     display: flex;
     justify-content: space-between;
+  }
+  .typing-game-menu-div-hidden {
+    padding: 0;
+    padding-left: 1rem;
+    transition: transform 200ms;
+    height: 100vh;
+    width: 20rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgb(40, 40, 40);
+    overflow-y: scroll;
+    direction: rtl;
+    transform: translateX(21rem);
+    -webkit-transform: translateX(21rem);
+    -moz-transform: translateX(21rem);
+    transition: transform 200ms;
+  }
+  .typing-game-menu-div-shown {
+    padding: 1rem;
+    transition: transform 200ms;
+    height: 100vh;
+    width: 20rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgb(40, 40, 40);
+    overflow-y: scroll;
+    direction: rtl;
+  }
+  .typing-test-levels-open {
+    margin: 0;
+    padding: 0;
+    transform: translateX(-20rem);
+    position: fixed;
+    transition: transform 200ms;
+  }
+  .typing-test-levels-closed {
+    transition: transform 200ms;
   }
 }
 @media only screen and (max-width: 1000px) {

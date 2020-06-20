@@ -5,6 +5,7 @@ import Div100vh from "react-div-100vh";
 import "./typingTest.css";
 
 function TypingTest(props) {
+  const [isSlidingMenuOpen, setIsSlidingMenuOpen] = useState(false);
   const [randomText, setRandomText] = useState("");
   const [randomTextArr, setRandomTextArr] = useState("");
   const [isRunning, setIsRunning] = useState(false);
@@ -87,6 +88,15 @@ function TypingTest(props) {
       } else {
         setIsEqual(false);
       }
+    }
+  };
+
+  const handleOpeningSideMenu = () => {
+    setIsSlidingMenuOpen(!isSlidingMenuOpen);
+  };
+  const enableClickingOutsideToCloseTheMenu = () => {
+    if (isSlidingMenuOpen) {
+      setIsSlidingMenuOpen(false);
     }
   };
 
@@ -255,10 +265,45 @@ function TypingTest(props) {
   return (
     <div>
       <div
+        className={
+          isSlidingMenuOpen
+            ? "typing-game-menu-div-shown"
+            : "typing-game-menu-div-hidden"
+        }
+      >
+        <div>
+          <h4 style={{ fontSize: "2rem", marginTop: "1.5rem" }}>Shortcuts</h4>
+          <div>
+            <ul
+              style={{
+                color: "white",
+                padding: 0,
+                margin: 0,
+                textAlign: "center",
+                marginTop: "2rem",
+              }}
+            >
+              <li>Hello</li>
+              <li>Hello</li>
+              <li>Hello</li>
+              <li>Hello</li>
+              <li>Hello</li>
+              <li>Hello</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
         style={{ backgroundImage: `url(${props.imageURL})` }}
         className="background-image"
       ></div>
-      <Div100vh className="typing-test">
+      <Div100vh
+        className={
+          isSlidingMenuOpen
+            ? "typing-test-levels-open"
+            : "typing-test-levels-closed"
+        }
+      >
         <animated.div style={animation}>
           <div className="typing-test-jumbotron jumbotron shadow">
             <h3>{props.title}</h3>
@@ -266,7 +311,9 @@ function TypingTest(props) {
               <Link to="/">
                 <div className="home-button">Home</div>
               </Link>
-              <div className="levels-button">Levels</div>
+              <div onClick={handleOpeningSideMenu} className="levels-button">
+                Levels
+              </div>
             </div>
           </div>
           {won ? winScreen() : game()}
