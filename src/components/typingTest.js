@@ -4,7 +4,7 @@ import { useSpring, animated } from "react-spring";
 import Div100vh from "react-div-100vh";
 import "./typingTest.css";
 
-function TypingTest() {
+function TypingTest(props) {
   const [randomText, setRandomText] = useState("");
   const [randomTextArr, setRandomTextArr] = useState("");
   const [isRunning, setIsRunning] = useState(false);
@@ -24,13 +24,7 @@ function TypingTest() {
       setNextText(false);
     }
     const selectRandomText = () => {
-      let jsonText = require("./text.json");
-      let random = Math.floor(
-        Math.random() * Math.floor(jsonText.texts.length)
-      );
-      setRandomText(jsonText.texts[random]);
-      let text = jsonText.texts[random];
-
+      let text = props.text;
       let array = [];
       let splitedText = text.split(" ");
       setRandomTextArr(splitedText);
@@ -259,18 +253,24 @@ function TypingTest() {
   };
 
   return (
-    <Div100vh className="typing-test">
-      <animated.div style={animation}>
-        <div className="typing-test-jumbotron jumbotron shadow">
-          <h3>Typing Test</h3>
-          <Link to="/">
-            <button className="btn btn-light">Home</button>
-          </Link>
-        </div>
-        {won ? winScreen() : game()}
-        {typingTestFooter()}
-      </animated.div>
-    </Div100vh>
+    <div>
+      <div
+        style={{ backgroundImage: `url(${props.imageURL})` }}
+        className="background-image"
+      ></div>
+      <Div100vh className="typing-test">
+        <animated.div style={animation}>
+          <div className="typing-test-jumbotron jumbotron shadow">
+            <h3>{props.title}</h3>
+            <Link to="/">
+              <button className="btn btn-light">Home</button>
+            </Link>
+          </div>
+          {won ? winScreen() : game()}
+          {typingTestFooter()}
+        </animated.div>
+      </Div100vh>
+    </div>
   );
 }
 export default TypingTest;

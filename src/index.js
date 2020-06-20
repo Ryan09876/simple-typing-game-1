@@ -10,6 +10,14 @@ import HomeMenu from "./homeMenu";
 import TypintTest from "./components/typingTest";
 import Levels from "./components/levels";
 
+let info = require("./components/text.json");
+
+let infoArray = [];
+info.texts.map((title, index) => {
+  let routeLinks = title.title.split(" ").join("");
+  infoArray.push(routeLinks);
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>
@@ -20,9 +28,20 @@ ReactDOM.render(
         <Route path="/10-second-game">
           <Game10second />
         </Route>
-        <Route path="/levels">
+        <Route exact path="/levels">
           <Levels />
         </Route>
+        {infoArray.map((title, index) => {
+          return (
+            <Route path={`/levels/${title}`}>
+              <TypintTest
+                text={info.texts[index].text}
+                imageURL={info.texts[index].imageURL}
+                title={info.texts[index].title}
+              />
+            </Route>
+          );
+        })}
       </Switch>
     </Router>
   </React.StrictMode>,
