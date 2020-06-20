@@ -81,6 +81,26 @@
     filter: brightness(40%) blur(7px);
     transform: scale(1.03);
   }
+  .home-button,
+  .levels-button {
+    background-color: rgb(255, 255, 255);
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+    color: rgb(0, 0, 0);
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .home-button:hover {
+    box-shadow: 0px 0px 25px rgb(255, 255, 255);
+  }
+  .levels-button:hover {
+    box-shadow: 0px 0px 25px rgb(255, 255, 255);
+  }
+  .home-levels-div {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 @media only screen and (max-width: 1000px) {
   .typing-test-jumbotron {
@@ -176,7 +196,7 @@
   transition: 0.7;
 }
 .progress-bar-in {
-  background: linear-gradient(to left, #237add, #0034a5);
+  background: white;
   height: 0.5rem;
   padding: 0;
   margin: 0;

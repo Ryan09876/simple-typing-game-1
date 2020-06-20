@@ -262,9 +262,12 @@ function TypingTest(props) {
         <animated.div style={animation}>
           <div className="typing-test-jumbotron jumbotron shadow">
             <h3>{props.title}</h3>
-            <Link to="/">
-              <button className="btn btn-light">Home</button>
-            </Link>
+            <div className="home-levels-div">
+              <Link to="/">
+                <div className="home-button">Home</div>
+              </Link>
+              <div className="levels-button">Levels</div>
+            </div>
           </div>
           {won ? winScreen() : game()}
           {typingTestFooter()}
