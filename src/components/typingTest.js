@@ -313,6 +313,7 @@ function TypingTest(props) {
         className="background-image"
       ></div>
       <Div100vh
+        onClick={enableClickingOutsideToCloseTheMenu}
         className={
           isSlidingMenuOpen
             ? "typing-test-levels-open"
