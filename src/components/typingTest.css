@@ -155,6 +155,15 @@
     cursor: pointer;
     height: 2.5rem;
   }
+  .typing-test-quick-list-item-active {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    height: 2.5rem;
+    background-color: rgb(91, 161, 54);
+  }
+
   .typing-test-quick-list-div {
     background-color: rgb(91, 161, 54);
     width: 0rem;

@@ -299,12 +299,22 @@ function TypingTest(props) {
               }}
             >
               {allLevelsTitles.map((info, index) => {
+                let isActive = false;
+                if (props.title === allLevelsTitles[index].title) {
+                  isActive = true;
+                }
                 return (
                   <Link
                     key={index}
                     to={`/levels/${info.title.split(" ").join("")}`}
                   >
-                    <div className="typing-test-quick-list-item">
+                    <div
+                      className={
+                        isActive
+                          ? "typing-test-quick-list-item-active"
+                          : "typing-test-quick-list-item"
+                      }
+                    >
                       <div className="typing-test-quick-list-div"></div>
                       <li className="typing-test-li-list">{info.title}</li>
                     </div>
