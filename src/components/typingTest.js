@@ -19,6 +19,7 @@ function TypingTest(props) {
   const [repeatGame, setRepeatGame] = useState(false);
   const [nextText, setNextText] = useState(false);
   const [progresPercent, setProgresPercent] = useState(0);
+  const [allLevelsTitles, setAllLevesTitles] = useState([]);
 
   useEffect(() => {
     if (nextText) {
@@ -163,7 +164,7 @@ function TypingTest(props) {
     return (
       <div>
         <div className="text-to-type container">
-          <p>{randomWordSpace}</p>
+          <p>{props.text}</p>
         </div>
         <div className="word-preview-container container">
           <h4 className={selectClassName()}>
@@ -262,6 +263,11 @@ function TypingTest(props) {
     );
   };
 
+  useEffect(() => {
+    let text = require("./text.json");
+    setAllLevesTitles(text.texts);
+  }, []);
+
   return (
     <div>
       <div
@@ -272,7 +278,9 @@ function TypingTest(props) {
         }
       >
         <div>
-          <h4 style={{ fontSize: "2rem", marginTop: "1.5rem" }}>Shortcuts</h4>
+          <h4 style={{ fontSize: "2rem", marginTop: "1.5rem", color: "white" }}>
+            Shortcuts
+          </h4>
           <div>
             <ul
               style={{
@@ -283,12 +291,19 @@ function TypingTest(props) {
                 marginTop: "2rem",
               }}
             >
-              <li>Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
+              {allLevelsTitles.map((info, index) => {
+                return (
+                  <Link
+                    key={index}
+                    to={`/levels/${info.title.split(" ").join("")}`}
+                  >
+                    <div className="typing-test-quick-list-item">
+                      <div className="typing-test-quick-list-div"></div>
+                      <li className="typing-test-li-list">{info.title}</li>
+                    </div>
+                  </Link>
+                );
+              })}
             </ul>
           </div>
         </div>

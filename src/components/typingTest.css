@@ -104,7 +104,7 @@
     justify-content: space-between;
   }
   .typing-game-menu-div-hidden {
-    padding: 0;
+    padding: 1rem;
     padding-left: 1rem;
     transition: transform 200ms;
     height: 100vh;
@@ -122,6 +122,7 @@
   }
   .typing-game-menu-div-shown {
     padding: 1rem;
+    padding-right: 0;
     transition: transform 200ms;
     height: 100vh;
     width: 20rem;
@@ -133,14 +134,37 @@
     direction: rtl;
   }
   .typing-test-levels-open {
-    margin: 0;
-    padding: 0;
+    width: 100vw;
     transform: translateX(-20rem);
     position: fixed;
     transition: transform 200ms;
   }
   .typing-test-levels-closed {
+    width: 100vw;
     transition: transform 200ms;
+  }
+  .typing-test-li-list {
+    color: white;
+    padding: 0.5rem;
+    border-left: 2px solid rgb(91, 161, 54);
+  }
+  .typing-test-quick-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    height: 2.5rem;
+  }
+  .typing-test-quick-list-div {
+    background-color: rgb(91, 161, 54);
+    width: 0rem;
+    height: 2.5rem;
+  }
+  .typing-test-quick-list-item:hover .typing-test-quick-list-div {
+    width: 5px;
+  }
+  .typing-test-quick-list-item:hover {
+    background-color: rgb(71, 71, 71);
   }
 }
 @media only screen and (max-width: 1000px) {
@@ -312,7 +336,7 @@
     transition: 0.3s;
   }
   .icon:hover {
-    background-color: rgba(0, 0, 0, 0.356);
+    background-color: rgba(255, 255, 255, 0.178);
   }
   .repeat-icon {
     transition: 0.2s;
@@ -322,9 +346,6 @@
   }
   .next-icon {
     transition: 0.2s;
-  }
-  .icon:hover .next-icon {
-    transform: scale(1.1);
   }
   .wpm {
     margin-left: auto;
