@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import Div100vh from "react-div-100vh";
 import "./typingTest.css";
+import { createDispatchHook } from "react-redux";
 
 function TypingTest(props) {
   const [isSlidingMenuOpen, setIsSlidingMenuOpen] = useState(false);
@@ -20,6 +21,8 @@ function TypingTest(props) {
   const [nextText, setNextText] = useState(false);
   const [progresPercent, setProgresPercent] = useState(0);
   const [allLevelsTitles, setAllLevesTitles] = useState([]);
+  const [allCharactersArray, setAllCharactersArray] = useState([]);
+  const [inputCharacters, setInputCharacters] = useState([]);
 
   useEffect(() => {
     if (nextText) {
@@ -39,6 +42,12 @@ function TypingTest(props) {
     };
     selectRandomText();
 
+    let arrayOfCharacters = [];
+    props.text.split("").forEach((character) => {
+      arrayOfCharacters.push(character);
+    });
+    setAllCharactersArray(arrayOfCharacters);
+
     //start the game over when the text is changed
     setIsRunning(false);
     setProgresPercent(0);
@@ -52,52 +61,6 @@ function TypingTest(props) {
     percent *= 100;
     setProgresPercent(percent);
   }, [textWordCountUp]);
-
-  const checkForEqualWord = (e) => {
-    if (repeatGame) {
-      e.target.value = "";
-      setRepeatGame(false);
-    }
-
-    if (randomWordSpace.length - 1 === textWordCountUp) {
-      setIsRunning(false);
-      setWon(true);
-    } else {
-      if (isRunning) {
-        if (e.target.value === randomWordSpace[textWordCountUp]) {
-          e.target.value = "";
-          setIsEqual(false);
-          setIsWrong(false);
-          setTextWordCountUp((textWordCountUp) => {
-            return textWordCountUp + 1;
-          });
-        }
-      } else if (isRunning === false) {
-        if (e.target.value === randomWordSpace[0]) {
-          setIsRunning(true);
-          e.target.value = "";
-          setIsEqual(false);
-          setIsWrong(false);
-          setTextWordCountUp((textWordCountUp) => {
-            return textWordCountUp + 1;
-          });
-        }
-      }
-
-      let word = e.target.value;
-
-      if (e.target.value === randomTextArr[textWordCountUp]) {
-        setIsEqual(true);
-      } else if (word.length > randomTextArr[textWordCountUp].length - 1) {
-        setIsWrong(true);
-      } else if (word.length !== randomTextArr[textWordCountUp].length) {
-        setIsWrong(false);
-        setIsEqual(false);
-      } else {
-        setIsEqual(false);
-      }
-    }
-  };
 
   const handleOpeningSideMenu = () => {
     setIsSlidingMenuOpen(!isSlidingMenuOpen);
@@ -167,11 +130,77 @@ function TypingTest(props) {
     setTextWordCountUp(0);
   };
 
+  const checkIfTheCharactersAreEqual = () => {
+    console.log(inputCharacters);
+    return "hello";
+  };
+
+  const checkForEqualWord = (e) => {
+    // if (e.target.value !== undefined) {
+    //   setInputCharacters(e.target.value);
+    // }
+    // if (repeatGame) {
+    //   e.target.value = "";
+    //   setRepeatGame(false);
+    // }
+    // if (randomWordSpace.length - 1 === textWordCountUp) {
+    //   setIsRunning(false);
+    //   setWon(true);
+    // } else {
+    //   if (isRunning) {
+    //     if (e.target.value === randomWordSpace[textWordCountUp]) {
+    //       e.target.value = "";
+    //       setIsEqual(false);
+    //       setIsWrong(false);
+    //       setTextWordCountUp((textWordCountUp) => {
+    //         return textWordCountUp + 1;
+    //       });
+    //     }
+    //   } else if (isRunning === false) {
+    //     if (e.target.value === randomWordSpace[0]) {
+    //       setIsRunning(true);
+    //       e.target.value = "";
+    //       setIsEqual(false);
+    //       setIsWrong(false);
+    //       setTextWordCountUp((textWordCountUp) => {
+    //         return textWordCountUp + 1;
+    //       });
+    //     }
+    //   }
+    //   let word = e.target.value;
+    //   if (e.target.value === randomTextArr[textWordCountUp]) {
+    //     setIsEqual(true);
+    //   } else if (word.length > randomTextArr[textWordCountUp].length - 1) {
+    //     setIsWrong(true);
+    //   } else if (word.length !== randomTextArr[textWordCountUp].length) {
+    //     setIsWrong(false);
+    //     setIsEqual(false);
+    //   } else {
+    //     setIsEqual(false);
+    //   }
+    // }
+
+    if (allCharactersArray !== undefined) {
+      if (
+        e.target.value[e.target.value.length - 1] ===
+        allCharactersArray[e.target.value.length - 1]
+      ) {
+        console.log("Yolo");
+      }
+    }
+  };
+
   const game = () => {
     return (
       <div>
         <div className="text-to-type container">
-          <p>{props.text}</p>
+          {allCharactersArray.map((character, index) => {
+            return (
+              <span key={index} id={`span#${index}`}>
+                {character}
+              </span>
+            );
+          })}
         </div>
         <div className="word-preview-container container">
           <h4 className={selectClassName()}>
