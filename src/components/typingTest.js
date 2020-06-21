@@ -38,7 +38,14 @@ function TypingTest(props) {
       setRandomWordSpace(array);
     };
     selectRandomText();
-  }, [nextText]);
+
+    //start the game over when the text is changed
+    setIsRunning(false);
+    setProgresPercent(0);
+    setWPM(0);
+    setCountingUpSeconds(0);
+    setTextWordCountUp(0);
+  }, [props]);
 
   useEffect(() => {
     let percent = textWordCountUp / randomWordSpace.length;
@@ -308,10 +315,10 @@ function TypingTest(props) {
           </div>
         </div>
       </div>
-      <div
+      <animated.div
         style={{ backgroundImage: `url(${props.imageURL})` }}
         className="background-image"
-      ></div>
+      ></animated.div>
       <Div100vh
         onClick={enableClickingOutsideToCloseTheMenu}
         className={
