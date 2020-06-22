@@ -23,6 +23,7 @@ function TypingTest(props) {
   const [allLevelsTitles, setAllLevesTitles] = useState([]);
   const [allCharactersArray, setAllCharactersArray] = useState([]);
   const [inputCharacters, setInputCharacters] = useState([]);
+  const [styleObject, setStyleObject] = useState([]);
 
   useEffect(() => {
     if (nextText) {
@@ -185,8 +186,27 @@ function TypingTest(props) {
         e.target.value[e.target.value.length - 1] ===
         allCharactersArray[e.target.value.length - 1]
       ) {
-        console.log("Yolo");
       }
+    }
+  };
+
+  useEffect(() => {
+    if (allCharactersArray !== undefined) {
+      let array = [];
+      for (let i = 0; i < allCharactersArray.length; i++) {
+        array.push(null);
+      }
+      setStyleObject(array);
+    }
+  }, [allCharactersArray]);
+
+  const checkForTheStyle = (i) => {
+    if (styleObject[i] === null) {
+      console.log("null");
+    } else if (styleObject[i] === true) {
+      console.log("Yaaaay");
+    } else if (styleObject[i] === false) {
+      console.log("noooooo");
     }
   };
 
@@ -196,7 +216,7 @@ function TypingTest(props) {
         <div className="text-to-type container">
           {allCharactersArray.map((character, index) => {
             return (
-              <span key={index} id={`span#${index}`}>
+              <span key={index} className={checkForTheStyle(index)}>
                 {character}
               </span>
             );
