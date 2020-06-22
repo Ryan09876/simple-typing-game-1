@@ -108,6 +108,9 @@ const Levels = () => {
               })}
             </ul>
           </div>
+          <div onClick={handleOpeningSideMenu} className="close-button">
+            <h4>X</h4>
+          </div>
         </div>
       </div>
       <div
@@ -116,6 +119,7 @@ const Levels = () => {
       >
         <animated.div style={animation}>
           <Header
+            homeBotton={true}
             title={"Levels"}
             info={"Select what story you want to parctice your typing on!"}
           ></Header>
@@ -124,6 +128,16 @@ const Levels = () => {
             className="open-quick-menu-button"
           >
             <h4>Quick menu</h4>
+          </div>
+          <Link style={{ color: "white" }} to="/levels/random-quote">
+            <div className="random-quote container">
+              <h5>Type a random quote!</h5>
+            </div>
+          </Link>
+
+          <div className="levels-hr container-fluid">
+            <h2>Levels</h2>
+            <hr></hr>
           </div>
           <div>{renderAllTheCards()}</div>
         </animated.div>

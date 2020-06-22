@@ -9,11 +9,39 @@
     display: flex;
     justify-content: space-between;
   }
+  .home-botton {
+    background-color: rgb(73, 73, 73);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    position: fixed;
+    top: 4rem;
+    right: 22rem;
+  }
 }
 @media only screen and (max-width: 1000px) {
   .menu-header {
     display: flex;
     justify-content: center;
+  }
+  .header-h1-div {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90vw;
+  }
+  .home-botton {
+    background-color: rgb(73, 73, 73);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1rem;
+    padding: 1.5rem;
+    border-radius: 10px;
   }
 }
 @media only screen and (max-width: 420px) {

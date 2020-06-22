@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import "./homeMenu.css";
 import Div100vh from "react-div-100vh";

@@ -7,9 +7,9 @@
 .netlify
 # testing
 /coverage
-
+apiKey.json
 /public/index.html
-
+/home/anthony/Projects/typing-game/src/components/apiKey.json
 # production
 /build
 

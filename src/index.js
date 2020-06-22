@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
@@ -9,6 +9,7 @@ import Game10second from "./game10seconds";
 import HomeMenu from "./homeMenu";
 import TypintTest from "./components/typingTest";
 import Levels from "./components/levels";
+import RandomQuote from "./components/randomQuote";
 
 let info = require("./components/text.json");
 
@@ -33,7 +34,7 @@ ReactDOM.render(
         </Route>
         {infoArray.map((title, index) => {
           return (
-            <Route path={`/levels/${title}`}>
+            <Route key={index} path={`/levels/${title}`}>
               <TypintTest
                 text={info.texts[index].text}
                 imageURL={info.texts[index].imageURL}
@@ -42,6 +43,9 @@ ReactDOM.render(
             </Route>
           );
         })}
+        <Route path="/levels/random-quote">
+          <RandomQuote />
+        </Route>
       </Switch>
     </Router>
   </React.StrictMode>,

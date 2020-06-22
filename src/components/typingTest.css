@@ -28,22 +28,11 @@
     transition: 0.3s;
     display: flex;
   }
-  .word-preview-text-1 {
-    color: white;
-    transition: 0.1s;
-    margin-right: 1rem;
-  }
-  .word-preview-text-2 {
-    margin-right: 1rem;
-  }
-  .word-preview-text-3 {
-    margin-right: 1rem;
-  }
-  .word-preview-text-4 {
-    margin-right: 1rem;
-  }
+  .word-preview-text-1,
+  .word-preview-text-2,
+  .word-preview-text-3,
+  .word-preview-text-4,
   .word-preview-text-5 {
-    opacity: 0.2;
     margin-right: 1rem;
   }
   .word-preview-text-6 {
@@ -181,6 +170,20 @@
   }
 }
 @media only screen and (max-width: 1000px) {
+  .home-levels-div,
+  .typing-game-menu-div-hidden,
+  .typing-game-menu-div-shown,
+  .typing-test-levels-open,
+  .typing-test-li-list,
+  .typing-test-quick-list-item,
+  .typing-test-quick-list-item-active {
+    transform: translateX(1100px);
+    position: fixed;
+  }
+  .next-icon,
+  .repeat-icon {
+    font-size: 10px;
+  }
   .typing-test-jumbotron {
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
@@ -208,35 +211,28 @@
     transition: 0.3s;
     display: flex;
   }
-  .word-preview-text-1 {
-    color: white;
-    transition: 0.1s;
-    margin-right: 1rem;
-  }
-  .word-preview-text-2 {
-    margin-right: 1rem;
-  }
-  .word-preview-text-3 {
-    margin-right: 1rem;
-  }
+  .word-preview-text-1,
+  .word-preview-text-2,
+  .word-preview-text-3,
   .word-preview-text-4 {
-    margin-right: 1rem;
+    margin-right: 0.5rem;
+    font-size: 1rem;
   }
-  .word-preview-text-5 {
-    opacity: 0.2;
-    margin-right: 1rem;
-  }
+
+  .word-preview-text-5,
   .word-preview-text-6 {
     opacity: 0.2;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
   }
   .word-preview-text-1-equal {
+    font-size: 1rem;
     color: rgb(24, 185, 33);
     transition: 0.2s;
     margin-right: 1rem;
     transform: translateY(-10px);
   }
   .word-preview-text-1-wrong {
+    font-size: 1rem;
     color: rgb(255, 0, 0);
     transition: 0.2s;
     margin-right: 1rem;
@@ -264,24 +260,49 @@
     justify-content: center;
     text-align: center;
   }
-}
-.progress-bar-out {
-  border-radius: 5px;
-  height: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.14);
-  margin-top: 1rem;
-  padding: 0;
-  transition: 0.7;
-}
-.progress-bar-in {
-  background: white;
-  height: 0.5rem;
-  padding: 0;
-  margin: 0;
-  border-radius: 5px;
-  transition: 0.3s;
+
+  .progress-bar-out {
+    position: fixed;
+    top: 2rem;
+    left: 0;
+    border-radius: 5px;
+    height: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.14);
+    margin-top: 1rem;
+    padding: 0;
+    transition: 0.7;
+  }
+  .progress-bar-in {
+    position: fixed;
+    background: white;
+    height: 0.5rem;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
 }
 @media only screen and (min-width: 1001px) {
+  .progress-bar-out {
+    position: fixed;
+    top: 7rem;
+    left: 0;
+    border-radius: 5px;
+    height: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.14);
+    margin-top: 1rem;
+    padding: 0;
+    transition: 0.7;
+  }
+  .progress-bar-in {
+    position: fixed;
+    background: white;
+    height: 0.5rem;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
   .footer {
     transition: 0.3s;
     color: white;
@@ -336,7 +357,7 @@
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.596);
   }
   .icon {
     display: flex;
@@ -366,24 +387,9 @@
   }
 }
 @media only screen and (max-width: 1000px) {
-  .icon:hover {
-    background-color: rgba(0, 0, 0, 0.356);
-  }
-  .repeat-icon {
-    transition: 0.2s;
-  }
-  .icon:hover .repeat-icon {
-    transform: rotate(-30deg);
-  }
+  .repeat-icon,
   .next-icon {
     transition: 0.2s;
-  }
-  .icon:hover .next-icon {
-    transform: scale(1.1);
-  }
-  .wpm {
-    margin-left: auto;
-    margin-right: 1.5rem;
   }
   .footer {
     transition: 0.7s;
@@ -397,7 +403,7 @@
     padding: 0;
   }
   .wpm-time {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-bottom: 0;
   }
   .aling-flex {

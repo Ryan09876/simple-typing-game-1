@@ -1,0 +1,38 @@
+@media only screen and (min-width: 1001px) {
+  .random-quote-div h1 {
+    color: white;
+  }
+  .author-div {
+  }
+  .won-text {
+    font-size: 25px;
+  }
+  .word-preview-container-quote {
+    margin: 0;
+    display: flex;
+    color: white;
+    margin: auto;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .typing-test-jumbotron {
+    display: flex;
+    justify-content: center;
+  }
+  .author-div {
+    margin-top: 8rem;
+  }
+  .author-text {
+    font-size: 15px;
+  }
+
+  .won-text {
+    font-size: 15px;
+  }
+  .word-preview-container-quote {
+    margin: 0;
+    display: flex;
+    color: white;
+    margin: auto;
+  }
+}

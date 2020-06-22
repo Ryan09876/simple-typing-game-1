@@ -21,7 +21,6 @@ function Input(props) {
     let randomNewWords = require("random-words");
     return randomNewWords(2000); //2000 words is probably too much but this almost makes the words not repeat
   });
-  const [palabras, setPalabras] = useState(["", "", "", ""]);
 
   /*================== Select the random words ==================*/
 

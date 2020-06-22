@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import Div100vh from "react-div-100vh";
 import "./typingTest.css";
-import { createDispatchHook } from "react-redux";
 
 function TypingTest(props) {
   const [isSlidingMenuOpen, setIsSlidingMenuOpen] = useState(false);
-  const [randomText, setRandomText] = useState("");
+  //const [randomText, setRandomText] = useState("");
   const [randomTextArr, setRandomTextArr] = useState("");
   const [isRunning, setIsRunning] = useState(false);
   const [countingUpSeconds, setCountingUpSeconds] = useState(0);
@@ -22,8 +21,9 @@ function TypingTest(props) {
   const [progresPercent, setProgresPercent] = useState(0);
   const [allLevelsTitles, setAllLevesTitles] = useState([]);
   const [allCharactersArray, setAllCharactersArray] = useState([]);
-  const [inputCharacters, setInputCharacters] = useState([]);
-  const [styleObject, setStyleObject] = useState([]);
+  //const [inputCharacters, setInputCharacters] = useState([]);
+  //const [styleCharacter, setStyleCharacter] = useState([]);
+  //const [spanArray, setSpanArray] = useState();
 
   useEffect(() => {
     if (nextText) {
@@ -36,7 +36,7 @@ function TypingTest(props) {
       setRandomTextArr(splitedText);
       splitedText.map((word) => {
         let randomWord = word + " ";
-        array.push(randomWord);
+        return array.push(randomWord);
       });
       array.push(".");
       setRandomWordSpace(array);
@@ -55,7 +55,7 @@ function TypingTest(props) {
     setWPM(0);
     setCountingUpSeconds(0);
     setTextWordCountUp(0);
-  }, [props]);
+  }, [props, nextText]);
 
   useEffect(() => {
     let percent = textWordCountUp / randomWordSpace.length;
@@ -131,149 +131,159 @@ function TypingTest(props) {
     setTextWordCountUp(0);
   };
 
-  const checkIfTheCharactersAreEqual = () => {
-    console.log(inputCharacters);
-    return "hello";
-  };
-
   const checkForEqualWord = (e) => {
-    // if (e.target.value !== undefined) {
-    //   setInputCharacters(e.target.value);
-    // }
-    // if (repeatGame) {
-    //   e.target.value = "";
-    //   setRepeatGame(false);
-    // }
-    // if (randomWordSpace.length - 1 === textWordCountUp) {
-    //   setIsRunning(false);
-    //   setWon(true);
-    // } else {
-    //   if (isRunning) {
-    //     if (e.target.value === randomWordSpace[textWordCountUp]) {
-    //       e.target.value = "";
-    //       setIsEqual(false);
-    //       setIsWrong(false);
-    //       setTextWordCountUp((textWordCountUp) => {
-    //         return textWordCountUp + 1;
-    //       });
-    //     }
-    //   } else if (isRunning === false) {
-    //     if (e.target.value === randomWordSpace[0]) {
-    //       setIsRunning(true);
-    //       e.target.value = "";
-    //       setIsEqual(false);
-    //       setIsWrong(false);
-    //       setTextWordCountUp((textWordCountUp) => {
-    //         return textWordCountUp + 1;
-    //       });
-    //     }
-    //   }
-    //   let word = e.target.value;
-    //   if (e.target.value === randomTextArr[textWordCountUp]) {
-    //     setIsEqual(true);
-    //   } else if (word.length > randomTextArr[textWordCountUp].length - 1) {
-    //     setIsWrong(true);
-    //   } else if (word.length !== randomTextArr[textWordCountUp].length) {
-    //     setIsWrong(false);
-    //     setIsEqual(false);
-    //   } else {
-    //     setIsEqual(false);
-    //   }
-    // }
-
-    if (allCharactersArray !== undefined) {
-      if (
-        e.target.value[e.target.value.length - 1] ===
-        allCharactersArray[e.target.value.length - 1]
-      ) {
+    if (repeatGame) {
+      e.target.value = "";
+      setRepeatGame(false);
+    }
+    if (randomWordSpace.length - 1 === textWordCountUp) {
+      setIsRunning(false);
+      setWon(true);
+    } else {
+      if (isRunning) {
+        if (e.target.value === randomWordSpace[textWordCountUp]) {
+          e.target.value = "";
+          setIsEqual(false);
+          setIsWrong(false);
+          setTextWordCountUp((textWordCountUp) => {
+            return textWordCountUp + 1;
+          });
+        }
+      } else if (isRunning === false) {
+        if (e.target.value === randomWordSpace[0]) {
+          setIsRunning(true);
+          e.target.value = "";
+          setIsEqual(false);
+          setIsWrong(false);
+          setTextWordCountUp((textWordCountUp) => {
+            return textWordCountUp + 1;
+          });
+        }
+      }
+      let word = e.target.value;
+      if (e.target.value === randomTextArr[textWordCountUp]) {
+        setIsEqual(true);
+      } else if (word.length > randomTextArr[textWordCountUp].length - 1) {
+        setIsWrong(true);
+      } else if (word.length !== randomTextArr[textWordCountUp].length) {
+        setIsWrong(false);
+        setIsEqual(false);
+      } else {
+        setIsEqual(false);
       }
     }
+
+    // if (allCharactersArray !== undefined) {
+    //   if (
+    //     styleCharacter[e.target.value.length - 1] === "equal" ||
+    //     styleCharacter[e.target.value.length - 1] === "not equal"
+    //   ) {
+    //     let array = styleCharacter;
+    //     array[e.target.value.length] = "null";
+    //     setStyleCharacter(array);
+    //   } else if (
+    //     e.target.value[e.target.value.length - 1] ===
+    //     allCharactersArray[e.target.value.length - 1]
+    //   ) {
+    //     let array = styleCharacter;
+    //     array[e.target.value.length - 1] = "equal";
+    //     setStyleCharacter(array);
+    //   } else if (
+    //     e.target.value[e.target.value.length - 1] !==
+    //     allCharactersArray[e.target.value.length - 1]
+    //   ) {
+    //     let array = styleCharacter;
+    //     array[e.target.value.length - 1] = "not equal";
+    //     setStyleCharacter(array);
+    //   }
+
+    //   if (
+    //     e.target.value[e.target.value.length - 1] ===
+    //     allCharactersArray[e.target.value.length - 1]
+    //   ) {
+    //     let newArray = spanArray;
+    //     newArray[e.target.value.length - 1].props.className = 1;
+    //     setSpanArray(newArray);
+    //   }
+    // }
   };
 
-  useEffect(() => {
-    if (allCharactersArray !== undefined) {
-      let array = [];
-      for (let i = 0; i < allCharactersArray.length; i++) {
-        array.push(null);
-      }
-      setStyleObject(array);
-    }
-  }, [allCharactersArray]);
+  // useEffect(() => {
+  //   if (allCharactersArray !== undefined) {
+  //     let array = [];
+  //     for (let i = 0; i < allCharactersArray.length; i++) {
+  //       array.push(null);
+  //     }
+  //     setStyleCharacter(array);
+  //   }
+  // }, [allCharactersArray]);
 
-  const checkForTheStyle = (i) => {
-    if (styleObject[i] === null) {
-      console.log("null");
-    } else if (styleObject[i] === true) {
-      console.log("Yaaaay");
-    } else if (styleObject[i] === false) {
-      console.log("noooooo");
-    }
-  };
+  // useEffect(() => {
+  //   let array = allCharactersArray.map((character, index) => {
+  //     return (
+  //       <span className="lola" key={index}>
+  //         {character}
+  //       </span>
+  //     );
+  //   });
+  //   setSpanArray(array);
+  // }, [styleCharacter]);
 
   const game = () => {
-    return (
-      <div>
-        <div className="text-to-type container">
-          {allCharactersArray.map((character, index) => {
-            return (
-              <span key={index} className={checkForTheStyle(index)}>
-                {character}
-              </span>
-            );
-          })}
-        </div>
-        <div className="word-preview-container container">
-          <h4 className={selectClassName()}>
-            {randomWordSpace[textWordCountUp]}
-          </h4>
-          <h4 className="word-preview-text-2">
-            {randomWordSpace[textWordCountUp + 1]}
-          </h4>
-          <h4 className="word-preview-text-3">
-            {randomWordSpace[textWordCountUp + 2]}
-          </h4>
-          <h4 className="word-preview-text-4">
-            {randomWordSpace[textWordCountUp + 3]}
-          </h4>
-          <h4 className="word-preview-text-5">
-            {randomWordSpace[textWordCountUp + 4]}
-          </h4>
-          <h4 className="word-preview-text-6">
-            {randomWordSpace[textWordCountUp + 5]}
-          </h4>
-          <h4 className="word-preview-text-6">...</h4>
-        </div>
-        <div className="input-field container">
-          <form>
-            <input
-              autoFocus
-              spellCheck="true"
-              autoComplete="on"
-              autoCorrect="on"
-              autoCapitalize="off"
-              onChange={checkForEqualWord}
-              placeholder={"Start typing the text above!"}
-              className="form-control"
-              type="text"
-            ></input>
-          </form>
-        </div>
-        <div className="container">
-          <div
-            className="progress-bar-out container"
-            style={isRunning ? { opacity: 1 } : { opacity: 0 }}
-          >
+    if (allCharactersArray !== undefined) {
+      return (
+        <div>
+          <div className="text-to-type container">{randomWordSpace}</div>
+          <div className="word-preview-container container">
+            <h4 className={selectClassName()}>
+              {randomWordSpace[textWordCountUp]}
+            </h4>
+            <h4 className="word-preview-text-2">
+              {randomWordSpace[textWordCountUp + 1]}
+            </h4>
+            <h4 className="word-preview-text-3">
+              {randomWordSpace[textWordCountUp + 2]}
+            </h4>
+            <h4 className="word-preview-text-4">
+              {randomWordSpace[textWordCountUp + 3]}
+            </h4>
+            <h4 className="word-preview-text-5">
+              {randomWordSpace[textWordCountUp + 4]}
+            </h4>
+            <h4 className="word-preview-text-6">
+              {randomWordSpace[textWordCountUp + 5]}
+            </h4>
+            <h4 className="word-preview-text-6">...</h4>
+          </div>
+          <div className="input-field container">
+            <form>
+              <input
+                autoFocus
+                spellCheck="true"
+                autoComplete="on"
+                autoCorrect="on"
+                autoCapitalize="off"
+                onChange={checkForEqualWord}
+                placeholder={"Start typing the text above!"}
+                className="form-control"
+                type="text"
+              ></input>
+            </form>
+          </div>
+          <div className="container-fluid">
             <div
-              className="progress-bar-in container"
-              style={{ width: `${progresPercent}%` }}
-            ></div>
-            <p className="word-count">
-              {textWordCountUp} / {randomTextArr.length} words
-            </p>
+              className="progress-bar-out container-fluid"
+              style={isRunning ? { opacity: 1 } : { opacity: 0 }}
+            >
+              <div
+                className="progress-bar-in container-fluid"
+                style={{ width: `${progresPercent}%` }}
+              ></div>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   };
 
   const typingTestFooter = () => {
@@ -284,11 +294,14 @@ function TypingTest(props) {
         }
       >
         <div className={won ? "stats-won container" : "stats container"}>
-          <div className="icon" onClick={repeatSameText}>
-            <div className="repeat-icon">
-              <i className="fas fa-undo-alt fa-2x"></i>
+          <Link to="/levels" style={{ color: "white" }}>
+            <div className="icon">
+              <div className="next-icon">
+                <i className="fas fa-arrow-left fa-2x"></i>
+              </div>
             </div>
-          </div>
+          </Link>
+
           <div className="aling-flex">
             <div className="mr-4">
               <p className="wpm-time">
@@ -300,10 +313,9 @@ function TypingTest(props) {
               <p className="wpm-time">Time: {countingUpSeconds}s</p>
             </div>
           </div>
-
-          <div className="icon ml-4" onClick={newText}>
-            <div className="next-icon">
-              <i className="fas fa-arrow-right fa-2x"></i>
+          <div className="icon ml-4" onClick={repeatSameText}>
+            <div className="repeat-icon">
+              <i class="fas fa-undo-alt fa-2x"></i>
             </div>
           </div>
         </div>

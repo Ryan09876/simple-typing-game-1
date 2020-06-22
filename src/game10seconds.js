@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
-import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Div100vh from "react-div-100vh";
 
 import "./App.css";
@@ -8,11 +8,10 @@ import "./App.css";
 import Input from "./components/input";
 
 function Game10seconds() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode] = useState(true);
   const [isMenuInScreen, setIsMenuInScreen] = useState(false);
   const [dificulty, setDificulty] = useState(1); // easy: 2seconds, normal: 1second, harn 0.4seconds
   const [language, setLanguage] = useState(true); // TRUE is English, FALSE is spanish
-  const [buttonPressed, setButtonPressed] = useState(false);
 
   /*================== Getting the data from the browser ==================*/
 
