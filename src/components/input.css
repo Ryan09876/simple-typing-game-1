@@ -10,15 +10,9 @@
   background-color: var(--red-color);
   color: black;
 }
-.form-running-out-of-time::placeholder {
-  color: black;
-}
-.form-input {
-  color: black;
-}
-.form-input:focus {
-  color: black;
-}
+.form-running-out-of-time::placeholder,
+.form-input,
+.form-input:focus,
 .form-input::placeholder {
   color: black;
 }
@@ -26,16 +20,13 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
   border: none;
 }
-.form-control:hover {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
-}
 .word-to-type,
 .time-left {
   margin: 0;
   padding: 0;
 }
 .word-to-type {
-  font-size: 2rem;
+  font-size: 1rem;
 }
 .time-and-word-to-type {
   align-items: center;
@@ -46,4 +37,17 @@
 }
 .fast-transition {
   transition: 0.1s;
+}
+
+@media only screen and (min-width: 1001px) {
+  .word-to-type {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .word-to-type {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
 }
