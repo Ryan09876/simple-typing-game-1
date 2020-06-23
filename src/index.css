@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: "consolas", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+  font-family: "Fira Code", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-attachment: fixed;
@@ -19,5 +17,5 @@ code {
   background-color: rgb(26, 26, 26);
 }
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(91, 161, 54);
+  background-color: rgb(88, 88, 88);
 }

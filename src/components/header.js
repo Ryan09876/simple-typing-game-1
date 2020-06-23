@@ -19,7 +19,7 @@ const Header = (props) => {
             </Link>
           </div>
 
-          <h5 style={{ color: "rgb(91, 161, 44)" }}>{props.info}</h5>
+          <h5 style={{ color: "rgb(0, 118, 253)" }}>{props.info}</h5>
         </div>
       </div>
     </div>

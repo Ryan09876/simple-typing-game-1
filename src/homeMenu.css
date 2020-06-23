@@ -42,7 +42,7 @@ hr {
     transition: 0.2s;
     background: linear-gradient(
       to top,
-      rgb(91, 161, 44) 50%,
+      rgb(0, 118, 253) 50%,
       rgb(60, 60, 60) 50%
     );
     background-size: 100% 200%;
@@ -123,7 +123,7 @@ hr {
     background-color: rgb(92, 92, 92);
   }
   .green-background {
-    background-color: rgb(91, 161, 44);
+    background-color: rgb(0, 118, 253);
     position: fixed;
     width: 1rem;
     margin: 0;
@@ -171,10 +171,10 @@ hr {
     word-wrap: break-word;
   }
   .info-links {
-    color: rgb(91, 161, 44);
+    color: rgb(0, 118, 253);
   }
   .info-links:hover {
-    color: rgb(166, 255, 0);
+    color: rgb(0, 118, 253);
   }
 }
 
@@ -267,7 +267,7 @@ hr {
     background-color: rgb(40, 40, 40);
   }
   .green-background {
-    background-color: rgb(91, 161, 44);
+    background-color: rgb(0, 118, 253);
     position: fixed;
     width: 1rem;
     margin: 0;
@@ -409,7 +409,7 @@ hr {
     background-color: rgb(40, 40, 40);
   }
   .green-background {
-    background-color: rgb(91, 161, 44);
+    background-color: rgb(0, 118, 253);
     position: fixed;
     width: 1rem;
     margin: 0;
@@ -461,6 +461,6 @@ hr {
     margin-bottom: 6.5rem;
   }
   .info-links {
-    color: rgb(91, 161, 44);
+    color: rgb(0, 118, 253);
   }
 }

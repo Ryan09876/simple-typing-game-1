@@ -28,7 +28,7 @@
     position: relative;
     padding: 0rem;
     position: fixed;
-    background-color: rgb(91, 161, 44);
+    background-color: rgb(0, 118, 253);
     top: 0;
     right: 0;
     min-width: 21rem;
@@ -90,7 +90,7 @@
     text-align: center;
     align-items: center;
     transition: 0.2s;
-    background: linear-gradient(to top, rgb(91, 161, 44) 50%, white 50%);
+    background: linear-gradient(to top, rgb(0, 118, 253) 50%, white 50%);
     background-size: 100% 200%;
     background-position: left top;
   }
@@ -171,7 +171,7 @@
     position: relative;
     padding: 0rem;
     position: fixed;
-    background-color: rgb(91, 161, 44);
+    background-color: rgb(0, 118, 253);
     top: 0;
     right: 0;
     min-width: 21rem;
@@ -241,7 +241,7 @@
     text-align: center;
     align-items: center;
     transition: 0.2s;
-    background: linear-gradient(to top, rgb(91, 161, 44) 50%, white 50%);
+    background: linear-gradient(to top, rgb(0, 118, 253) 50%, white 50%);
     background-size: 100% 200%;
     background-position: left top;
   }
@@ -318,7 +318,7 @@
     position: relative;
     padding: 0rem;
     position: fixed;
-    background-color: rgb(91, 161, 44);
+    background-color: rgb(0, 118, 253);
     top: 0;
     right: 0;
     min-width: 21rem;
@@ -388,7 +388,7 @@
     text-align: center;
     align-items: center;
     transition: 0.2s;
-    background: linear-gradient(to top, rgb(91, 161, 44) 50%, white 50%);
+    background: linear-gradient(to top, rgb(0, 118, 253) 50%, white 50%);
     background-size: 100% 200%;
     background-position: left top;
   }

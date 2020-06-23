@@ -17,7 +17,7 @@
     height: 1rem;
     padding: 1.5rem;
     border-radius: 10px;
-    position: fixed;
+    position: absolute;
     top: 4rem;
     right: 22rem;
   }

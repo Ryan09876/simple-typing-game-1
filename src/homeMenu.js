@@ -37,12 +37,12 @@ function HomeMenu() {
       >
         <Div100vh className="green-background"></Div100vh>
         <div className="sliding-menu-inside">
-          <h3 style={{ "text-align": "center", color: "rgb(91, 161, 44)" }}>
+          <h3 style={{ "text-align": "center", color: "rgb(0, 118, 253)" }}>
             Info
           </h3>
           <hr></hr>
           <p>No info for now</p>
-          <h3 style={{ "text-align": "center", color: "rgb(91, 161, 44)" }}>
+          <h3 style={{ "text-align": "center", color: "rgb(0, 118, 253)" }}>
             Contact
           </h3>
           <hr></hr>

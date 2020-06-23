@@ -68,7 +68,7 @@ function Game10seconds() {
 
   const changeDificultyButtonColors = (isDeficultyEqual) => {
     if (dificulty === isDeficultyEqual) {
-      return "dificulty-button btn btn-success m-1";
+      return "dificulty-button btn btn-primary m-1";
     } else return "dificulty-button btn btn-light m-1";
 
     // if (darkMode && dificulty === isDeficultyEqual) {
@@ -99,7 +99,7 @@ function Game10seconds() {
       >
         <Div100vh className="ten-second-sliding-menu-div">
           <div className="how-to-play">
-            <h3 style={{ color: "rgb(91, 161, 44)", "text-align": "center" }}>
+            <h3 style={{ color: "rgb(0, 118, 253)", "text-align": "center" }}>
               How to pay?
             </h3>
             <hr></hr>
@@ -219,7 +219,7 @@ function Game10seconds() {
               >
                 <div className="title ">
                   <h1>{language ? "10 second chalenge!" : "Escribidor!"}</h1>
-                  <h5 style={{ color: "rgb(91, 161, 44)" }}>
+                  <h5 style={{ color: "rgb(0, 118, 253)" }}>
                     Type fast, you only have 10 seconds
                   </h5>
                 </div>

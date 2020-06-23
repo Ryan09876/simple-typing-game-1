@@ -51,9 +51,7 @@ const Levels = () => {
                     </div>
                     <div className="content">
                       <div>
-                        <h4 style={{ color: "rgb(91, 161, 44)" }}>
-                          {info.title}
-                        </h4>
+                        <h4 style={{ color: "white" }}>{info.title}</h4>
                       </div>
                       <div>
                         <h5 style={{ color: "white" }}>{wordLenght} words</h5>
