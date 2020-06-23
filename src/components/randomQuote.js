@@ -47,7 +47,7 @@ const RandomQuote = () => {
     setCountingUpSeconds(0);
     setTextWordCountUp(0);
     selectRandomText();
-  }, []);
+  }, [won]);
 
   useEffect(() => {
     let percent = textWordCountUp / randomWordSpace.length;
