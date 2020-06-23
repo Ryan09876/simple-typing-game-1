@@ -18,7 +18,6 @@ const Header = (props) => {
               {homeMenu()}
             </Link>
           </div>
-
           <h5 style={{ color: "rgb(0, 118, 253)" }}>{props.info}</h5>
         </div>
       </div>

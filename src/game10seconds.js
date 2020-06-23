@@ -193,6 +193,12 @@ function Game10seconds() {
             </div>
           </a> */}
           </div>
+          <div
+            onClick={enableClickingOutsideToCloseTheMenu}
+            className="close-botton"
+          >
+            x
+          </div>
         </Div100vh>
       </Div100vh>
     );

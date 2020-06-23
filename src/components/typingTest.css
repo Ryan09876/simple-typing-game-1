@@ -5,6 +5,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+    align-items: center;
     padding: 1.5rem;
     transition: 0.3s;
   }
@@ -78,20 +79,20 @@
   }
   .home-button,
   .levels-button {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(80, 80, 80);
     margin: 1rem;
     padding: 1rem;
     border-radius: 20px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     transition: 0.3s;
     cursor: pointer;
   }
-  .home-button:hover {
-    box-shadow: 0px 0px 25px rgb(255, 255, 255);
-  }
+  .home-button:hover,
   .levels-button:hover {
-    box-shadow: 0px 0px 25px rgb(255, 255, 255);
+    background-color: rgb(121, 121, 121);
+    transform: translateY(-3px);
   }
+
   .home-levels-div {
     display: flex;
     justify-content: space-between;

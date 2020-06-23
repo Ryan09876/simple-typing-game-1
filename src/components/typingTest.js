@@ -349,6 +349,12 @@ function TypingTest(props) {
           <h4 style={{ fontSize: "2rem", marginTop: "1.5rem", color: "white" }}>
             Shortcuts
           </h4>
+          <Link className="quick-menu-random-link" to="/levels/random-quote">
+            <div className="quick-menu-random-div">
+              <h5>Random Quote</h5>
+            </div>
+          </Link>
+          <hr></hr>
           <div>
             <ul
               style={{

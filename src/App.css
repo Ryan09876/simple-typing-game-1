@@ -71,7 +71,7 @@
     transition: 0.3s;
   }
   .settings-div {
-    position: fixed;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
     bottom: 0;
@@ -79,7 +79,8 @@
   .nav-bottons {
     cursor: pointer;
     margin: 2rem;
-    color: black;
+    color: rgb(255, 255, 255);
+    background-color: rgb(80, 80, 80);
     min-width: 250px;
     border-radius: 10px;
     padding: 1rem;
@@ -89,16 +90,13 @@
     justify-content: center;
     text-align: center;
     align-items: center;
-    transition: 0.2s;
-    background: linear-gradient(to top, rgb(0, 118, 253) 50%, white 50%);
-    background-size: 100% 200%;
-    background-position: left top;
+    transition: 0.3s;
+    bottom: 0;
+    z-index: 3;
   }
   .nav-bottons:hover {
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.35);
-
-    background-position: right bottom;
-    color: white;
+    background-color: rgb(121, 121, 121);
+    transform: translateY(-3px);
   }
   .hr-white {
     transition: 0.3s;
@@ -230,7 +228,7 @@
   .nav-bottons {
     cursor: pointer;
     margin: 1rem;
-    color: black;
+    color: rgb(255, 255, 255);
     min-width: 10rem;
     border-radius: 10px;
     padding: 0.5rem;
@@ -241,9 +239,7 @@
     text-align: center;
     align-items: center;
     transition: 0.2s;
-    background: linear-gradient(to top, rgb(0, 118, 253) 50%, white 50%);
-    background-size: 100% 200%;
-    background-position: left top;
+    background-color: rgb(80, 80, 80);
   }
   .highest-score-dark {
     opacity: 0.5;
@@ -289,6 +285,12 @@
   }
 }
 @media only screen and (max-width: 350px) {
+  .title h1 {
+    font-size: 20px;
+  }
+  .title h5 {
+    font-size: 10px;
+  }
   .App {
     text-align: center;
     display: flex;
@@ -345,9 +347,6 @@
     margin-left: 1rem;
     background-color: rgb(40, 40, 40);
   }
-  .transition {
-    transition: 0.3s;
-  }
   .settings-dark {
     color: white;
     display: flex;
@@ -369,28 +368,23 @@
     background-color: white;
   }
   .settings-div {
-    position: fixed;
+    position: absolute;
     left: 50%;
-    transform: translateX(-50%);
     bottom: 0;
   }
   .nav-bottons {
-    cursor: pointer;
     margin: 1rem;
-    color: black;
-    min-width: 10rem;
+    min-width: 7rem;
     border-radius: 10px;
+    height: 40px;
     padding: 0.5rem;
     border: none;
-    min-height: 3vh;
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
-    transition: 0.2s;
-    background: linear-gradient(to top, rgb(0, 118, 253) 50%, white 50%);
-    background-size: 100% 200%;
-    background-position: left top;
+    color: rgb(255, 255, 255);
+    background-color: rgb(80, 80, 80);
   }
   .highest-score-dark {
     opacity: 0.5;
