@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import "./homeMenu.css";
 import Div100vh from "react-div-100vh";
+import Typical from "react-typical";
 import { useState } from "react";
 import { render } from "@testing-library/react";
 import Header from "./components/header";
@@ -81,6 +82,29 @@ function HomeMenu() {
     );
   };
 
+  useEffect(() => {
+    renderTheAutoTyping();
+  }, []);
+
+  const renderTheAutoTyping = () => {
+    return (
+      <div className="auto-typer-div">
+        <Typical
+          wraper="b"
+          steps={[
+            "You'll have a lot of fun here!",
+            4000,
+            "And also learn to type faster!",
+            4000,
+            "You are going to type like a pro",
+            4000,
+            "Have fun!",
+          ]}
+        />
+      </div>
+    );
+  };
+
   const homeMenuApp = () => {
     return (
       <div>
@@ -106,6 +130,7 @@ function HomeMenu() {
             >
               <h2 className="menu-settings-button-text">About</h2>
             </div>
+            {renderTheAutoTyping()}
             <div className="game-modes container">
               <div className="d-flex justify-content-center">
                 <h2>Game Modes:</h2>

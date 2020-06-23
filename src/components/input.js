@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Typical from "react-typical";
 
 import "./input.css";
 
@@ -137,16 +138,22 @@ function Input(props) {
       return (
         <div>
           <h1 className="start-message">
-            {props.language ? "Game over :(" : "Perdiste :("}
+            <Typical
+              className="word-to-type"
+              wraper="b"
+              steps={["Game over."]}
+            />
           </h1>
         </div>
       );
     } else if (isRunning === false) {
       return (
-        <div>
-          <h1 className="game-over-message">
-            {props.language ? "Begin to type!" : "Empieza a escribir!"}
-          </h1>
+        <div className="game-over-message">
+          <Typical
+            className="word-to-type"
+            wraper="b"
+            steps={['Type "start" to begin!']}
+          />
         </div>
       );
     }
