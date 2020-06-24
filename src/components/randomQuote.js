@@ -20,6 +20,7 @@ const RandomQuote = () => {
   const [progresPercent, setProgresPercent] = useState(0);
   const [allLevelsTitles, setAllLevesTitles] = useState([]);
   const [allCharactersArray, setAllCharactersArray] = useState([]);
+  const [charactersTyped, setCharactersTyped] = useState(0);
 
   useEffect(() => {
     let randomQuotes = require("./randomQuote.json");
@@ -47,7 +48,7 @@ const RandomQuote = () => {
     setCountingUpSeconds(0);
     setTextWordCountUp(0);
     selectRandomText();
-  }, [won]);
+  }, []);
 
   useEffect(() => {
     let percent = textWordCountUp / randomWordSpace.length;
@@ -93,7 +94,7 @@ const RandomQuote = () => {
       }
     };
     calculateWordPerMinute();
-  }, [textWordCountUp, isRunning]);
+  }, [charactersTyped, textWordCountUp, isRunning]);
 
   const repeatSameText = () => {
     setRepeatGame(true);
@@ -114,6 +115,9 @@ const RandomQuote = () => {
   };
 
   const checkForEqualWord = (e) => {
+    setCharactersTyped((charactersTyped) => {
+      return charactersTyped + 1;
+    });
     if (repeatGame) {
       e.target.value = "";
       setRepeatGame(false);
@@ -145,10 +149,13 @@ const RandomQuote = () => {
 
       let wordLength = e.target.value.length;
 
-      if (e.target.value === randomTextArr[textWordCountUp]) {
-        setIsEqual(true);
-      } else if (wordLength > randomTextArr[textWordCountUp].length - 1) {
+      if (wordLength > randomTextArr[textWordCountUp].length) {
+        setIsEqual(false);
         setIsWrong(true);
+      } else if (wordLength >= randomTextArr[textWordCountUp].length) {
+        if (e.target.value !== randomTextArr[textWordCountUp]) {
+          setIsWrong(true);
+        } else setIsEqual(true);
       } else if (wordLength !== randomTextArr[textWordCountUp].length) {
         setIsWrong(false);
         setIsEqual(false);

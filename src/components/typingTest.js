@@ -21,6 +21,7 @@ function TypingTest(props) {
   const [progresPercent, setProgresPercent] = useState(0);
   const [allLevelsTitles, setAllLevesTitles] = useState([]);
   const [allCharactersArray, setAllCharactersArray] = useState([]);
+  const [charactersTyped, setCharactersTyped] = useState(0);
   //const [inputCharacters, setInputCharacters] = useState([]);
   //const [styleCharacter, setStyleCharacter] = useState([]);
   //const [spanArray, setSpanArray] = useState();
@@ -110,7 +111,7 @@ function TypingTest(props) {
       }
     };
     calculateWordPerMinute();
-  }, [textWordCountUp, isRunning]);
+  }, [charactersTyped, textWordCountUp, isRunning]);
 
   const repeatSameText = () => {
     setRepeatGame(true);
@@ -132,6 +133,9 @@ function TypingTest(props) {
   };
 
   const checkForEqualWord = (e) => {
+    setCharactersTyped((charactersTyped) => {
+      return charactersTyped + 1;
+    });
     if (repeatGame) {
       e.target.value = "";
       setRepeatGame(false);
@@ -160,12 +164,17 @@ function TypingTest(props) {
           });
         }
       }
+
       let word = e.target.value;
-      if (e.target.value === randomTextArr[textWordCountUp]) {
-        setIsEqual(true);
-      } else if (word.length > randomTextArr[textWordCountUp].length - 1) {
+
+      if (wordLength > randomTextArr[textWordCountUp].length) {
+        setIsEqual(false);
         setIsWrong(true);
-      } else if (word.length !== randomTextArr[textWordCountUp].length) {
+      } else if (wordLength >= randomTextArr[textWordCountUp].length) {
+        if (e.target.value !== randomTextArr[textWordCountUp]) {
+          setIsWrong(true);
+        } else setIsEqual(true);
+      } else if (wordLength !== randomTextArr[textWordCountUp].length) {
         setIsWrong(false);
         setIsEqual(false);
       } else {
