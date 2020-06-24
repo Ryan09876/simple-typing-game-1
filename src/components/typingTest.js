@@ -165,7 +165,7 @@ function TypingTest(props) {
         }
       }
 
-      let word = e.target.value;
+      let wordLength = e.target.value;
 
       if (wordLength > randomTextArr[textWordCountUp].length) {
         setIsEqual(false);
