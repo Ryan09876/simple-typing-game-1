@@ -182,6 +182,8 @@ function TypingTest(props) {
       }
     }
 
+    //just a comment
+
     // if (allCharactersArray !== undefined) {
     //   if (
     //     styleCharacter[e.target.value.length - 1] === "equal" ||
