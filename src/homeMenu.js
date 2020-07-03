@@ -8,8 +8,6 @@ import { useState } from "react";
 import { render } from "@testing-library/react";
 import Header from "./components/header";
 
-//this is a comment just to test
-
 function HomeMenu() {
   const [isSlidingMenuOpen, setIsSlidingMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
